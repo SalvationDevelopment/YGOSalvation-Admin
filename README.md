@@ -10,7 +10,9 @@ Content Management System for YGOSalvation based on Strapi
   nodist 10
   ````
 - Setup a MongoDB user
-    - Inside the folder containing `mongodb.exe`, open the mongodb REPL.
+    - On Windows make sure the `C:\data\db` folder is created.
+    - Make sure MongoDB is running.
+    - Inside the folder containing `mongodb.exe`, open the mongodb REPL. `bin/mongo` for Windows.
     ```JavaScript
     use admin
     db.createUser({ user: "user" , pwd: "password", roles: ["userAdminAnyDatabase", "dbAdminAnyDatabase", "readWriteAnyDatabase"]})
