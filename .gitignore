@@ -513,3 +513,6 @@ MigrationBackup/
 
 #Sensitive Inforamtion
 */database.json
+
+#Mongo DB Data for Docker Volume
+src/mongodata

@@ -6,7 +6,8 @@ WORKDIR /usr/src/app
 RUN npm ci
 COPY ./src/package*.json /usr/src/app/src/
 WORKDIR /usr/src/app/src
-RUN npm ci 
+RUN npm ci
 COPY . /usr/src/app
+RUN npm run postinstall
 EXPOSE 1337
 CMD ["npm", "run", "start"]
