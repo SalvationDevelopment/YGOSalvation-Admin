@@ -1,0 +1,44 @@
+version: '3'
+services:
+  mongo:
+   image: mongo:latest
+   container_name: mongo
+   ports:
+    - "27017:27017"
+   volumes:
+    - ./src/mongodata:/data/db
+   environment:
+    - MONGO_INITDB_ROOT_USERNAME=user
+    - MONGO_INITDB_ROOT_PASSWORD=password
+  
+  admin:
+   build: ./
+   depends_on: 
+    - mongo
+   restart: on-failure
+   ports:
+    - 1337:1337
+   environment:
+    - DATABASE_USERNAME=user
+    - DATABASE_PASSWORD=password
+    - DATABASE_PORT=27017
+    - DATABASE_NAME=salvation
+    - DATABASE_HOST=mongo
+    - SECRET_KEY_1=KEY_1
+    - SECRET_KEY_2=KEY_2
+  
+  salvation:
+    build: ../YGOSalvation-Server
+    depends_on: 
+      - admin
+    ports:
+     - 80:80    
+     - 8995-9000:8995-9000
+    volumes:
+     - ../YGOSalvation-Server/src:/usr/src/app/src
+    environment: 
+     - ADMIN_SERVER_URL=http://admin:1337
+     - ADMIN_SERVER_USERNAME=ControlServer
+     - ADMIN_SERVER_PASSWORD=whatever
+     - PORT_RANGE_MIN=8995
+     - PORT_RANGE_MAX=9000
