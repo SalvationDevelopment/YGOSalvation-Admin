@@ -34,6 +34,8 @@ services:
     ports:
      - 80:80    
      - 8995-9000:8995-9000
+    volumes:
+     - ../YGOSalvation-Server/src:/usr/src/app/src
     environment: 
      - ADMIN_SERVER_URL=http://admin:1337
      - ADMIN_SERVER_USERNAME=ControlServer
