@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "rankings",
+    "description": "Ranking types"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "username": {
+      "type": "string"
+    },
+    "elo": {
+      "type": "integer"
+    },
+    "points": {
+      "type": "integer"
+    }
+  }
+}

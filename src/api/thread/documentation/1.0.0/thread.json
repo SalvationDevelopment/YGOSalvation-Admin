@@ -598,6 +598,9 @@
               },
               "link": {
                 "type": "string"
+              },
+              "section": {
+                "type": "string"
               }
             }
           }

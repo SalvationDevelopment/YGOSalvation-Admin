@@ -571,6 +571,31 @@
           },
           "link": {
             "type": "string"
+          },
+          "section": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "link": {
+                "type": "string"
+              },
+              "index": {
+                "type": "integer"
+              },
+              "forums": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -595,6 +620,9 @@
             }
           },
           "link": {
+            "type": "string"
+          },
+          "section": {
             "type": "string"
           }
         }

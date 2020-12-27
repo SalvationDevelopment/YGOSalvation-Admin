@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/sections": {
+    "/rankings": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find all the rankings's records",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve rankings document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Section"
+                    "$ref": "#/components/schemas/Rankings"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Section"
+          "Rankings"
         ],
         "parameters": [
           {
@@ -188,14 +188,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new rankings record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve rankings document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Section"
+                  "$ref": "#/components/schemas/Rankings"
                 }
               }
             }
@@ -233,7 +233,7 @@
         },
         "summary": "",
         "tags": [
-          "Section"
+          "Rankings"
         ],
         "requestBody": {
           "description": "",
@@ -241,20 +241,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewSection"
+                "$ref": "#/components/schemas/NewRankings"
               }
             }
           }
         }
       }
     },
-    "/sections/count": {
+    "/rankings/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Retrieve the numver of rankings documents",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve rankings document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -300,22 +300,22 @@
         },
         "summary": "",
         "tags": [
-          "Section"
+          "Rankings"
         ],
         "parameters": []
       }
     },
-    "/sections/{_id}": {
+    "/rankings/{_id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find one rankings record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve rankings document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Section"
+                  "$ref": "#/components/schemas/Rankings"
                 }
               }
             }
@@ -353,7 +353,7 @@
         },
         "summary": "",
         "tags": [
-          "Section"
+          "Rankings"
         ],
         "parameters": [
           {
@@ -370,14 +370,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a single rankings record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve rankings document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Section"
+                  "$ref": "#/components/schemas/Rankings"
                 }
               }
             }
@@ -415,7 +415,7 @@
         },
         "summary": "",
         "tags": [
-          "Section"
+          "Rankings"
         ],
         "requestBody": {
           "description": "",
@@ -423,7 +423,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewSection"
+                "$ref": "#/components/schemas/NewRankings"
               }
             }
           }
@@ -443,10 +443,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a single rankings record",
         "responses": {
           "200": {
-            "description": "deletes a single record based on the ID supplied",
+            "description": "deletes a single rankings based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -489,7 +489,7 @@
         },
         "summary": "",
         "tags": [
-          "Section"
+          "Rankings"
         ],
         "parameters": [
           {
@@ -508,7 +508,7 @@
   },
   "components": {
     "schemas": {
-      "Section": {
+      "Rankings": {
         "required": [
           "id"
         ],
@@ -516,70 +516,27 @@
           "id": {
             "type": "string"
           },
-          "title": {
+          "username": {
             "type": "string"
           },
-          "link": {
-            "type": "string"
-          },
-          "index": {
+          "elo": {
             "type": "integer"
           },
-          "forums": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "comments": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "threads": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "link": {
-                  "type": "string"
-                },
-                "section": {
-                  "type": "string"
-                }
-              }
-            }
+          "points": {
+            "type": "integer"
           }
         }
       },
-      "NewSection": {
+      "NewRankings": {
         "properties": {
-          "title": {
+          "username": {
             "type": "string"
           },
-          "link": {
-            "type": "string"
-          },
-          "index": {
+          "elo": {
             "type": "integer"
           },
-          "forums": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "points": {
+            "type": "integer"
           }
         }
       }
@@ -587,7 +544,7 @@
   },
   "tags": [
     {
-      "name": "Section"
+      "name": "Rankings"
     }
   ]
 }

@@ -18,6 +18,10 @@
     "index": {
       "type": "integer",
       "unique": true
+    },
+    "forums": {
+      "collection": "forum",
+      "via": "section"
     }
   }
 }

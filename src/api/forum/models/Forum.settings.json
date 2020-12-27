@@ -25,6 +25,10 @@
     },
     "link": {
       "type": "string"
+    },
+    "section": {
+      "model": "section",
+      "via": "forums"
     }
   }
 }
