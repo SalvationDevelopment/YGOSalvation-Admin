@@ -142,7 +142,6 @@ input CommentInput {
   forum: ID
 }
 
-"""封面"""
 type Cover {
   _id: ID!
   id: ID!

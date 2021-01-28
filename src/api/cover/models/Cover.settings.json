@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "cover",
   "info": {
     "name": "cover",
-    "description": "封面"
+    "description": ""
   },
   "options": {
     "timestamps": true
