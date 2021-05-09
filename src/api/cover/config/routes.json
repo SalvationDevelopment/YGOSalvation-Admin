@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/covers",
+      "handler": "Cover.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/covers/count",
+      "handler": "Cover.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/covers/:_id",
+      "handler": "Cover.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/covers",
+      "handler": "Cover.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/covers/:_id",
+      "handler": "Cover.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/covers/:_id",
+      "handler": "Cover.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
