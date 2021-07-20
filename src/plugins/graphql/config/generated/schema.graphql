@@ -142,6 +142,70 @@ input CommentInput {
   forum: ID
 }
 
+type Cover {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  image: UploadFile
+}
+
+type CoverAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type CoverConnection {
+  values: [Cover]
+  groupBy: CoverGroupBy
+  aggregate: CoverAggregator
+}
+
+type CoverConnection_id {
+  key: ID
+  connection: CoverConnection
+}
+
+type CoverConnectionCreatedAt {
+  key: DateTime
+  connection: CoverConnection
+}
+
+type CoverConnectionId {
+  key: ID
+  connection: CoverConnection
+}
+
+type CoverConnectionImage {
+  key: ID
+  connection: CoverConnection
+}
+
+type CoverConnectionName {
+  key: String
+  connection: CoverConnection
+}
+
+type CoverConnectionUpdatedAt {
+  key: DateTime
+  connection: CoverConnection
+}
+
+type CoverGroupBy {
+  _id: [CoverConnection_id]
+  id: [CoverConnectionId]
+  createdAt: [CoverConnectionCreatedAt]
+  updatedAt: [CoverConnectionUpdatedAt]
+  name: [CoverConnectionName]
+  image: [CoverConnectionImage]
+}
+
+input CoverInput {
+  name: String
+  image: ID
+}
+
 input createBackgroundInput {
   data: BackgroundInput
 }
@@ -156,6 +220,14 @@ input createCommentInput {
 
 type createCommentPayload {
   comment: Comment
+}
+
+input createCoverInput {
+  data: CoverInput
+}
+
+type createCoverPayload {
+  cover: Cover
 }
 
 input createDeckInput {
@@ -347,6 +419,14 @@ type deleteCommentPayload {
   comment: Comment
 }
 
+input deleteCoverInput {
+  where: InputID
+}
+
+type deleteCoverPayload {
+  cover: Cover
+}
+
 input deleteDeckInput {
   where: InputID
 }
@@ -429,6 +509,11 @@ input editCommentInput {
   user: ID
   thread: ID
   forum: ID
+}
+
+input editCoverInput {
+  name: String
+  image: ID
 }
 
 input editDeckInput {
@@ -615,7 +700,7 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Background | createBackgroundPayload | updateBackgroundPayload | deleteBackgroundPayload | BackgroundConnection | BackgroundAggregator | BackgroundGroupBy | BackgroundConnection_id | BackgroundConnectionId | BackgroundConnectionCreatedAt | BackgroundConnectionUpdatedAt | BackgroundConnectionName | BackgroundConnectionImage | Comment | createCommentPayload | updateCommentPayload | deleteCommentPayload | CommentConnection | CommentAggregator | CommentGroupBy | CommentConnection_id | CommentConnectionId | CommentConnectionCreatedAt | CommentConnectionUpdatedAt | CommentConnectionContent | CommentConnectionUser | CommentConnectionThread | CommentConnectionForum | Deck | createDeckPayload | updateDeckPayload | deleteDeckPayload | DeckConnection | DeckAggregator | DeckGroupBy | DeckConnection_id | DeckConnectionId | DeckConnectionCreatedAt | DeckConnectionUpdatedAt | DeckConnectionUser | DeckConnectionMain | DeckConnectionExtra | DeckConnectionSide | DeckConnectionName | DeckConnectionOwner | Forum | createForumPayload | updateForumPayload | deleteForumPayload | ForumConnection | ForumAggregator | ForumGroupBy | ForumConnection_id | ForumConnectionId | ForumConnectionCreatedAt | ForumConnectionUpdatedAt | ForumConnectionTitle | ForumConnectionDescription | ForumConnectionLink | Replay | createReplayPayload | updateReplayPayload | deleteReplayPayload | ReplayConnection | ReplayAggregator | ReplayGroupBy | ReplayConnection_id | ReplayConnectionId | ReplayConnectionCreatedAt | ReplayConnectionUpdatedAt | ReplayConnectionHistory | ReplayConnectionCreator | Section | createSectionPayload | updateSectionPayload | deleteSectionPayload | SectionConnection | SectionAggregator | SectionAggregatorSum | SectionAggregatorAvg | SectionAggregatorMin | SectionAggregatorMax | SectionGroupBy | SectionConnection_id | SectionConnectionId | SectionConnectionCreatedAt | SectionConnectionUpdatedAt | SectionConnectionTitle | SectionConnectionLink | SectionConnectionIndex | Thread | createThreadPayload | updateThreadPayload | deleteThreadPayload | ThreadConnection | ThreadAggregator | ThreadGroupBy | ThreadConnection_id | ThreadConnectionId | ThreadConnectionCreatedAt | ThreadConnectionUpdatedAt | ThreadConnectionThread | ThreadConnectionCreator | ThreadConnectionForum | Tournament | createTournamentPayload | updateTournamentPayload | deleteTournamentPayload | TournamentConnection | TournamentAggregator | TournamentGroupBy | TournamentConnection_id | TournamentConnectionId | TournamentConnectionCreatedAt | TournamentConnectionUpdatedAt | TournamentConnectionCreator | TournamentConnectionStarted | Updates | createUpdatesPayload | updateUpdatesPayload | deleteUpdatesPayload | UpdatesConnection | UpdatesAggregator | UpdatesGroupBy | UpdatesConnection_id | UpdatesConnectionId | UpdatesConnectionCreatedAt | UpdatesConnectionUpdatedAt | UpdatesConnectionTitle | UpdatesConnectionBody | UpdatesConnectionCreator | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserAggregatorSum | UsersPermissionsUserAggregatorAvg | UsersPermissionsUserAggregatorMin | UsersPermissionsUserAggregatorMax | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionTournament | UsersPermissionsUserConnectionElo | UsersPermissionsUserConnectionService | UsersPermissionsUserConnectionPoints | UsersPermissionsUserConnectionAvatar
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Background | createBackgroundPayload | updateBackgroundPayload | deleteBackgroundPayload | BackgroundConnection | BackgroundAggregator | BackgroundGroupBy | BackgroundConnection_id | BackgroundConnectionId | BackgroundConnectionCreatedAt | BackgroundConnectionUpdatedAt | BackgroundConnectionName | BackgroundConnectionImage | Comment | createCommentPayload | updateCommentPayload | deleteCommentPayload | CommentConnection | CommentAggregator | CommentGroupBy | CommentConnection_id | CommentConnectionId | CommentConnectionCreatedAt | CommentConnectionUpdatedAt | CommentConnectionContent | CommentConnectionUser | CommentConnectionThread | CommentConnectionForum | Cover | createCoverPayload | updateCoverPayload | deleteCoverPayload | CoverConnection | CoverAggregator | CoverGroupBy | CoverConnection_id | CoverConnectionId | CoverConnectionCreatedAt | CoverConnectionUpdatedAt | CoverConnectionName | CoverConnectionImage | Deck | createDeckPayload | updateDeckPayload | deleteDeckPayload | DeckConnection | DeckAggregator | DeckGroupBy | DeckConnection_id | DeckConnectionId | DeckConnectionCreatedAt | DeckConnectionUpdatedAt | DeckConnectionUser | DeckConnectionMain | DeckConnectionExtra | DeckConnectionSide | DeckConnectionName | DeckConnectionOwner | Forum | createForumPayload | updateForumPayload | deleteForumPayload | ForumConnection | ForumAggregator | ForumGroupBy | ForumConnection_id | ForumConnectionId | ForumConnectionCreatedAt | ForumConnectionUpdatedAt | ForumConnectionTitle | ForumConnectionDescription | ForumConnectionLink | Replay | createReplayPayload | updateReplayPayload | deleteReplayPayload | ReplayConnection | ReplayAggregator | ReplayGroupBy | ReplayConnection_id | ReplayConnectionId | ReplayConnectionCreatedAt | ReplayConnectionUpdatedAt | ReplayConnectionHistory | ReplayConnectionCreator | Section | createSectionPayload | updateSectionPayload | deleteSectionPayload | SectionConnection | SectionAggregator | SectionAggregatorSum | SectionAggregatorAvg | SectionAggregatorMin | SectionAggregatorMax | SectionGroupBy | SectionConnection_id | SectionConnectionId | SectionConnectionCreatedAt | SectionConnectionUpdatedAt | SectionConnectionTitle | SectionConnectionLink | SectionConnectionIndex | Thread | createThreadPayload | updateThreadPayload | deleteThreadPayload | ThreadConnection | ThreadAggregator | ThreadGroupBy | ThreadConnection_id | ThreadConnectionId | ThreadConnectionCreatedAt | ThreadConnectionUpdatedAt | ThreadConnectionThread | ThreadConnectionCreator | ThreadConnectionForum | Tournament | createTournamentPayload | updateTournamentPayload | deleteTournamentPayload | TournamentConnection | TournamentAggregator | TournamentGroupBy | TournamentConnection_id | TournamentConnectionId | TournamentConnectionCreatedAt | TournamentConnectionUpdatedAt | TournamentConnectionCreator | TournamentConnectionStarted | Updates | createUpdatesPayload | updateUpdatesPayload | deleteUpdatesPayload | UpdatesConnection | UpdatesAggregator | UpdatesGroupBy | UpdatesConnection_id | UpdatesConnectionId | UpdatesConnectionCreatedAt | UpdatesConnectionUpdatedAt | UpdatesConnectionTitle | UpdatesConnectionBody | UpdatesConnectionCreator | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserAggregatorSum | UsersPermissionsUserAggregatorAvg | UsersPermissionsUserAggregatorMin | UsersPermissionsUserAggregatorMax | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionTournament | UsersPermissionsUserConnectionElo | UsersPermissionsUserConnectionService | UsersPermissionsUserConnectionPoints | UsersPermissionsUserConnectionAvatar
 
 type Mutation {
   createBackground(input: createBackgroundInput): createBackgroundPayload
@@ -624,6 +709,9 @@ type Mutation {
   createComment(input: createCommentInput): createCommentPayload
   updateComment(input: updateCommentInput): updateCommentPayload
   deleteComment(input: deleteCommentInput): deleteCommentPayload
+  createCover(input: createCoverInput): createCoverPayload
+  updateCover(input: updateCoverInput): updateCoverPayload
+  deleteCover(input: deleteCoverInput): deleteCoverPayload
   createDeck(input: createDeckInput): createDeckPayload
   updateDeck(input: updateDeckInput): updateDeckPayload
   deleteDeck(input: deleteDeckInput): deleteDeckPayload
@@ -673,6 +761,9 @@ type Query {
   comment(id: ID!): Comment
   comments(sort: String, limit: Int, start: Int, where: JSON): [Comment]
   commentsConnection(sort: String, limit: Int, start: Int, where: JSON): CommentConnection
+  cover(id: ID!): Cover
+  covers(sort: String, limit: Int, start: Int, where: JSON): [Cover]
+  coversConnection(sort: String, limit: Int, start: Int, where: JSON): CoverConnection
   deck(id: ID!): Deck
   decks(sort: String, limit: Int, start: Int, where: JSON): [Deck]
   decksConnection(sort: String, limit: Int, start: Int, where: JSON): DeckConnection
@@ -1029,6 +1120,15 @@ input updateCommentInput {
 
 type updateCommentPayload {
   comment: Comment
+}
+
+input updateCoverInput {
+  where: InputID
+  data: editCoverInput
+}
+
+type updateCoverPayload {
+  cover: Cover
 }
 
 input updateDeckInput {
